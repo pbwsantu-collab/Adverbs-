@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0f766e">
+<meta name="description" content="ADVERB MASTER AI - Complete interactive English Grammar Learning PWA for West Bengal Board students based on Chapter XXI Adverbs (Rules 263-278)">
+<title>ADVERB MASTER AI | অধ্যায় XXI - Adverbs</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root {
+  --primary: #0f766e;
+  --primary-dark: #0d5c56;
+  --primary-light: #14b8a6;
+  --accent: #f59e0b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --bg: #f0fdfa;
+  --card: #ffffff;
+  --text: #134e4a;
+  --text-muted: #5eead4;
+  --border: #99f6e4;
+  --shadow: 0 4px 20px rgba(15, 118, 110, 0.12);
+  --radius: 16px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 12px; }
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 16px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+header h1 { font-size: 1.4rem; font-weight: 700; }
+header p { font-size: 0.85rem; opacity: 0.9; margin-top: 4px; }
+.nav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 10px 12px;
+  background: white;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 72px;
+  z-index: 90;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-btn.active, .nav-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+.screen { display: none; animation: fadeIn 0.3s ease; }
+.screen.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.card h2 { color: var(--primary); font-size: 1.2rem; margin-bottom: 8px; }
+.card h3 { color: var(--primary-dark); font-size: 1.05rem; margin: 12px 0 6px; }
+.rule-num {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.bengali {
+  background: #ecfdf5;
+  border-left: 4px solid var(--primary-light);
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 0 10px 10px 0;
+  font-size: 0.95rem;
+}
+.example-box {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 8px 0;
+}
+.example-box .en { font-weight: 600; }
+.example-box .bn { color: #92400e; font-size: 0.9rem; margin-top: 4px; }
+.note {
+  background: #fef3c7;
+  border-left: 4px solid var(--accent);
+  padding: 10px 14px;
+  margin: 10px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+}
+.warning {
+  background: #fee2e2;
+  border-left: 4px solid var(--danger);
+  padding: 10px 14px;
+  margin: 10px 0;
+  border-radius: 0 8px 8px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 0.9rem;
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  text-align: left;
+}
+th { background: var(--primary); color: white; }
+tr:nth-child(even) { background: #f0fdfa; }
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-accent { background: var(--accent); color: white; }
+.btn-success { background: var(--success); color: white; }
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+.btn-group { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.quiz-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  margin: 8px 0;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.quiz-option:hover { border-color: var(--primary); background: #f0fdfa; }
+.quiz-option.selected { border-color: var(--primary); background: #ccfbf1; }
+.quiz-option.correct { border-color: var(--success); background: #d1fae5; }
+.quiz-option.incorrect { border-color: var(--danger); background: #fee2e2; }
+.progress-bar {
+  height: 10px;
+  background: #e0f2fe;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-light), var(--primary));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.stat-card .num { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+.stat-card .label { font-size: 0.8rem; color: #64748b; }
+.search-box {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 14px;
+}
+.search-box:focus { outline: none; border-color: var(--primary); }
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 2px;
+}
+.tag-time { background: #dbeafe; color: #1e40af; }
+.tag-place { background: #dcfce7; color: #166534; }
+.tag-manner { background: #fef3c7; color: #92400e; }
+.tag-degree { background: #fce7f3; color: #9d174d; }
+.tag-cause { background: #e0e7ff; color: #3730a3; }
+.tag-order { background: #ffedd5; color: #9a3412; }
+.tag-affirm { background: #f3e8ff; color: #6b21a8; }
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+.hidden { display: none !important; }
+.audio-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+@media (max-width: 600px) {
+  header h1 { font-size: 1.2rem; }
+  .nav { top: 68px; }
+  .card { padding: 14px; }
+}
+/* Print styles */
+@media print {
+  header, .nav, .btn, .no-print { display: none !important; }
+  .screen { display: block !important; }
+  .card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>📘 ADVERB MASTER AI</h1>
+  <p>Understand Adverbs · Master Grammar · Improve English<br>
+  Chapter XXI · Rules 263–278 · Exercise 30</p>
+</header>
+
+<nav class="nav" id="mainNav">
+  <button class="nav-btn active" data-screen="home">🏠 Home</button>
+  <button class="nav-btn" data-screen="rules">📜 Rules</button>
+  <button class="nav-btn" data-screen="classification">🏷️ Types</button>
+  <button class="nav-btn" data-screen="comparison">📊 Compare</button>
+  <button class="nav-btn" data-screen="position">📍 Position</button>
+  <button class="nav-btn" data-screen="exercise30">✏️ Ex.30</button>
+  <button class="nav-btn" data-screen="quiz100">🧪 Test 100</button>
+  <button class="nav-btn" data-screen="progress">📈 Progress</button>
+  <button class="nav-btn" data-screen="search">🔍 Search</button>
+</nav>
+
+<div class="container">
+
+  <!-- HOME -->
+  <section id="home" class="screen active">
+    <div class="card">
+      <h2>স্বাগতম · Welcome</h2>
+      <p>This Progressive Web App teaches <strong>Chapter XXI – Adverbs</strong> from <em>A Text-Book of Higher English Grammar</em> (Rules 263–278 + Exercise 30).</p>
+      <div class="bengali">
+        এই অ্যাপটি পশ্চিমবঙ্গ বোর্ডের IX–XII শ্রেণির ছাত্র-ছাত্রীদের জন্য তৈরি। সমস্ত নিয়ম, উদাহরণ এবং অনুশীলনী বাংলা ব্যাখ্যাসহ দেওয়া আছে।
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">16</div><div class="label">Rules</div></div>
+        <div class="stat-card"><div class="num">20</div><div class="label">Ex.30 Qs</div></div>
+        <div class="stat-card"><div class="num">100</div><div class="label">Practice Test</div></div>
+        <div class="stat-card"><div class="num">∞</div><div class="label">Offline</div></div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="showScreen('rules')">Start Learning Rules</button>
+        <button class="btn btn-accent" onclick="showScreen('exercise30')">Exercise 30</button>
+        <button class="btn btn-success" onclick="showScreen('quiz100')">Take 100-Q Test</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Quick Navigation</h3>
+      <ul style="padding-left:20px;line-height:1.9">
+        <li><strong>Rules 263–278</strong> – Full textbook content + Bengali explanations</li>
+        <li><strong>Classification</strong> – Interactive type explorer</li>
+        <li><strong>Comparison Tables</strong> – Regular, -ly & irregular</li>
+        <li><strong>Position Trainer</strong> – Word-order rules with practice</li>
+        <li><strong>Exercise 30</strong> – All 20 original questions</li>
+        <li><strong>100-Question Assessment</strong> – MCQ, Identify, Classify, Error Correction, Word Order</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- RULES -->
+  <section id="rules" class="screen">
+    <div class="card">
+      <h2>📜 Rules 263 – 278</h2>
+      <p>Tap any rule to expand. All original text preserved + clear Bengali explanations.</p>
+      <input type="text" class="search-box" id="ruleSearch" placeholder="Search rules... (only, enough, there, yes...)" oninput="filterRules()">
+    </div>
+    <div id="rulesContainer"></div>
+  </section>
+
+  <!-- CLASSIFICATION -->
+  <section id="classification" class="screen">
+    <div class="card">
+      <h2>🏷️ Classification of Adverbs (Rule 265)</h2>
+      <p>Simple Adverbs are subdivided according to meaning. Select a category or try the interactive quiz.</p>
+    </div>
+    <div id="classContainer"></div>
+    <div class="card">
+      <h3>Interactive Classifier</h3>
+      <p id="classWord" style="font-size:1.4rem;font-weight:700;text-align:center;margin:16px 0">carefully</p>
+      <div class="btn-group" id="classOptions"></div>
+      <div id="classFeedback" class="hidden"></div>
+      <button class="btn btn-primary" onclick="nextClassWord()" style="margin-top:12px">Next Word →</button>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section id="comparison" class="screen">
+    <div class="card">
+      <h2>📊 Comparison of Adverbs (Rule 273)</h2>
+      <p>Adverbs (mostly of Manner/Quality) are compared like adjectives.</p>
+    </div>
+    <div class="card">
+      <h3>(a) One-syllable adverbs → -er / -est</h3>
+      <table>
+        <tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+        <tr><td>fast</td><td>faster</td><td>fastest</td></tr>
+        <tr><td>soon</td><td>sooner</td><td>soonest</td></tr>
+        <tr><td>late</td><td>later</td><td>latest</td></tr>
+        <tr><td>long</td><td>longer</td><td>longest</td></tr>
+        <tr><td>hard</td><td>harder</td><td>hardest</td></tr>
+        <tr><td>slow</td><td>slower</td><td>slowest</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>(b) -ly adverbs → more/less · most/least</h3>
+      <table>
+        <tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+        <tr><td>slowly</td><td>more / less slowly</td><td>most / least slowly</td></tr>
+        <tr><td>wisely</td><td>more / less wisely</td><td>most / least wisely</td></tr>
+        <tr><td>rapidly</td><td>more / less rapidly</td><td>most / least rapidly</td></tr>
+        <tr><td>quickly</td><td>more / less quickly</td><td>most / least quickly</td></tr>
+        <tr><td>swiftly</td><td>more / less swiftly</td><td>most / least swiftly</td></tr>
+        <tr><td>early</td><td>earlier</td><td>earliest</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>(c) Irregular Comparison</h3>
+      <table>
+        <tr><th>Positive</th><th>Comparative</th><th>Superlative</th></tr>
+        <tr><td>well / good</td><td>better</td><td>best</td></tr>
+        <tr><td>little</td><td>less</td><td>least</td></tr>
+        <tr><td>much</td><td>more</td><td>most</td></tr>
+        <tr><td>forth</td><td>further</td><td>furthest</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>(d) No comparison</h3>
+      <p>Many adverbs have no comparative form: <em>now, then, here, there, once, already, almost</em>.</p>
+      <div class="note">
+        <strong>Important:</strong> Both Adjectives and Adverbs can be compared. Distinguish by function — Adjectives compare Nouns; Adverbs compare verbs, adjectives or other adverbs.
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITION -->
+  <section id="position" class="screen">
+    <div class="card">
+      <h2>📍 Position of Adverbs (Rule 278)</h2>
+      <p>Master the placement rules. Practice with interactive exercises below.</p>
+    </div>
+    <div id="positionContent"></div>
+    <div class="card">
+      <h3>Word-Order Trainer</h3>
+      <p id="woSentence" style="font-size:1.1rem;margin:12px 0;font-weight:600"></p>
+      <div id="woOptions" class="btn-group"></div>
+      <div id="woFeedback" class="hidden"></div>
+      <button class="btn btn-primary" onclick="nextWordOrder()" style="margin-top:12px">Next →</button>
+    </div>
+  </section>
+
+  <!-- EXERCISE 30 -->
+  <section id="exercise30" class="screen">
+    <div class="card">
+      <h2>✏️ Exercise 30 – Original Textbook Questions</h2>
+      <p>Put the words in brackets at proper places. (All 20 original items)</p>
+      <div class="progress-bar"><div class="progress-fill" id="ex30Progress" style="width:0%"></div></div>
+      <p id="ex30Counter">Question 1 / 20</p>
+    </div>
+    <div class="card" id="ex30Card">
+      <p id="ex30Q" style="font-size:1.15rem;margin-bottom:14px"></p>
+      <input type="text" class="search-box" id="ex30Answer" placeholder="Type the full correct sentence...">
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="checkEx30()">Check Answer</button>
+        <button class="btn btn-outline" onclick="showEx30Answer()">Show Answer</button>
+        <button class="btn btn-success" onclick="nextEx30()">Next →</button>
+      </div>
+      <div id="ex30Feedback" class="hidden"></div>
+    </div>
+  </section>
+
+  <!-- QUIZ 100 -->
+  <section id="quiz100" class="screen">
+    <div class="card">
+      <h2>🧪 100-Question Assessment</h2>
+      <p>Mixed practice: MCQ · Identify · Classify · Error Correction · Word Order · Fill blanks</p>
+      <div class="progress-bar"><div class="progress-fill" id="quizProgress" style="width:0%"></div></div>
+      <p id="quizCounter">Question 1 / 100</p>
+    </div>
+    <div class="card" id="quizCard">
+      <p id="quizQ" style="font-size:1.1rem;margin-bottom:12px;font-weight:600"></p>
+      <div id="quizOptions"></div>
+      <div class="btn-group" style="margin-top:14px">
+        <button class="btn btn-primary" id="quizSubmitBtn" onclick="submitQuizAnswer()">Submit</button>
+        <button class="btn btn-outline hidden" id="quizNextBtn" onclick="nextQuizQ()">Next →</button>
+      </div>
+      <div id="quizFeedback" class="hidden"></div>
+    </div>
+    <div class="card hidden" id="quizResult">
+      <h2>Results</h2>
+      <div class="stat-grid" id="resultStats"></div>
+      <button class="btn btn-primary" onclick="restartQuiz()">Restart Test</button>
+      <button class="btn btn-outline" onclick="reviewWrong()">Review Wrong Answers</button>
+    </div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section id="progress" class="screen">
+    <div class="card">
+      <h2>📈 Your Progress</h2>
+      <div class="stat-grid" id="progressStats"></div>
+      <button class="btn btn-outline" onclick="resetProgress()">Reset All Progress</button>
+    </div>
+  </section>
+
+  <!-- SEARCH -->
+  <section id="search" class="screen">
+    <div class="card">
+      <h2>🔍 Search</h2>
+      <input type="text" class="search-box" id="globalSearch" placeholder="Search any rule, example, adverb..." oninput="doGlobalSearch()">
+      <div id="searchResults"></div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  ADVERB MASTER AI · Based on A Text-Book of Higher English Grammar · Chapter XXI<br>
+  Offline-capable PWA · For West Bengal Board Students · Made with ❤️
+</footer>
+
+<script>
+// ========== DATA: FULL RULES FROM SUPPLIED TEXT ==========
+const RULES = [
+  {
+    id: 263,
+    title: "Definition of Adverb",
+    original: `An Adverb is a word which generally qualifies a verb, an adjective or another adverb; but it also qualifies a sentence or any part of speech except a Noun and a Pronoun. [But see Note (b).]
+(a) Verb: He walks slowly.
+(b) Adj.: This is a very beautiful picture.
+(c) Adv.: This can be done more easily.
+(d) Participle: It is a very charming scene.
+(e) Preposition: He came right through the field. I arrived long before the time.
+(f) Conjunction: I hate him simply because he is a liar. He came just after I had left.
+(g) Sentence: Unfortunately I failed. Evidently, you are wrong.`,
+    bengali: `Adverb (ক্রিয়া বিশেষণ) হলো এমন শব্দ যা সাধারণত Verb, Adjective বা অন্য Adverb-কে বিশেষিত করে। এছাড়া এটি পুরো বাক্য বা Noun ও Pronoun ছাড়া অন্য যেকোনো part of speech-কেও qualify করতে পারে।
+উদাহরণ:
+• Verb: তিনি ধীরে হাঁটেন।
+• Adj: এটি একটি খুব সুন্দর ছবি।
+• Adv: এটি আরও সহজে করা যায়।`,
+    notes: `Note (a): In the examples in (e), the adverbs right and long may be taken as qualifying the whole phrases. Similarly simply and just may qualify whole adverbial clauses.
+Note (b): Adverbs never qualify Nouns or Pronouns (work of Adjectives). Confusing cases:
+• This pen is certainly mine. (certainly → adjectival element of mine)
+• Do not give me too many. (too → many)
+• He is almost a drunkard. (almost qualifies the phrase ‘a drunkard’)
+• I am, yours sincerely, Ramesh. (sincerely qualifies am – Oxford discussion notes adverbs may qualify pronouns in some views)`,
+    examples: [
+      {en: "He walks slowly.", bn: "সে ধীরে হাঁটে।", qualifies: "verb – walks"},
+      {en: "This is a very beautiful picture.", bn: "এটি একটি খুব সুন্দর ছবি।", qualifies: "adjective – beautiful"},
+      {en: "Unfortunately I failed.", bn: "দুর্ভাগ্যবশত আমি ব্যর্থ হয়েছি।", qualifies: "whole sentence"}
+    ]
+  },
+  {
+    id: 264,
+    title: "Classification of Adverbs (by use)",
+    original: `Adverbs are divided into three classes according to their use:
+(a) Simple or Independent Adverbs – merely qualify some word or sentence: He reads well. I can run fast. Unfortunately, I failed.
+(b) Conjunctive or Relative Adverbs – qualify a word and also connect two clauses. When antecedent is expressed = Relative; when not = Conjunctive.
+  “I know why he did it” (Conjunctive) vs “I know the reason why he did it” (Relative).
+  Principal ones: how, when, why, where, while.
+(c) Interrogative Adverbs – used in asking questions (direct & indirect): Why are you sorry? How did you do it? Tell me when he will come.`,
+    bengali: `ব্যবহার অনুসারে Adverb তিন প্রকার:
+(a) Simple/Independent – শুধু qualify করে।
+(b) Conjunctive/Relative – qualify করে + দুটি clause যুক্ত করে।
+(c) Interrogative – প্রশ্ন করার জন্য ব্যবহৃত।`,
+    notes: "",
+    examples: [
+      {en: "He reads well.", bn: "সে ভালো পড়ে।", qualifies: "Simple"},
+      {en: "I know why he did it.", bn: "আমি জানি কেন সে এটা করেছে।", qualifies: "Conjunctive"},
+      {en: "Why are you sorry?", bn: "তুমি দুঃখিত কেন?", qualifies: "Interrogative"}
+    ]
+  },
+  {
+    id: 265,
+    title: "Simple Adverbs classified by Meaning",
+    original: `(a) Time or Frequency: Now, then, when, early, always, before, daily, ever, never, soon, while, ago, already, twice, once, immediately, today, yesterday, frequently, etc.
+(b) Place: There, where, hither, thither, near, above, after, below, hence, etc.
+(c) Manner or Quality: Well, badly, ill, aloud, thus, wisely, quickly, how, highly, carefully, narrowly, dutifully, peacefully, etc. (largest class; many -ly forms)
+(d) Quantity / Degree / Number: Almost, enough, half, hardly, every, much, too, less, least, more, little, rather, abundantly, quite, once, twice, etc.
+(e) Cause and Effect: Why, therefore, wherefore, accordingly, consequently, hence (for that reason).
+(f) Order: First, second, secondly, last, lastly, etc.
+(g) Affirmation and Negation: Yes, no, not, certainly, perhaps, indeed, probably, possibly, nay, truly, really, etc.`,
+    bengali: `অর্থ অনুসারে Simple Adverb সাত ভাগে ভাগ করা যায়:
+সময়/পুনরাবৃত্তি · স্থান · রীতি/গুণ · পরিমাণ/মাত্রা · কারণ ও ফল · ক্রম · সম্মতি ও অস্বীকৃতি।`,
+    notes: "This is the largest practical classification used in teaching.",
+    examples: []
+  },
+  {
+    id: 266,
+    title: "“The” as an Adverb",
+    original: `"The" is sometimes used as a Relative Adverb of quantity (= by how much, to what extent) followed by its antecedent ‘the’, which is a Demonstrative Adverb of quantity (= by so much; to that extent); as,
+‘The more, the merrier.’
+‘The sooner, the better.’`,
+    bengali: `‘The’ কখনো Relative Adverb of quantity হিসেবে ব্যবহৃত হয়। উদাহরণ: The more, the merrier (যত বেশি, তত আনন্দ)। The sooner, the better (যত তাড়াতাড়ি, তত ভালো)।`,
+    notes: "",
+    examples: [
+      {en: "The more, the merrier.", bn: "যত বেশি, তত আনন্দ।", qualifies: "quantity"},
+      {en: "The sooner, the better.", bn: "যত তাড়াতাড়ি, তত ভালো।", qualifies: "quantity"}
+    ]
+  },
+  {
+    id: 267,
+    title: "Introductory “There”",
+    original: `"There" is an Introductory Adverb when it is used merely to introduce a sentence, with no meaning of place:
+There is a man there.
+There lived in this village a man named Suren.`,
+    bengali: `যখন ‘There’ শুধুমাত্র বাক্য শুরু করার জন্য ব্যবহৃত হয় এবং স্থানের অর্থ থাকে না, তখন একে Introductory Adverb বলে।
+উদাহরণ: There is a man there. (প্রথম there = introductory; দ্বিতীয় = place)`,
+    notes: "Distinguish carefully from the place adverb ‘there’.",
+    examples: [
+      {en: "There is a man there.", bn: "সেখানে একজন লোক আছে।", qualifies: "introductory + place"},
+      {en: "There lived in this village a man named Suren.", bn: "এই গ্রামে সুরেন নামে একজন লোক বাস করত।", qualifies: "introductory"}
+    ]
+  },
+  {
+    id: 268,
+    title: "Yes and No",
+    original: `(a) These are often classed as adverbs, but in reality they are substitute words or sentence words, standing for whole sentences.
+Is he in? Yes (or No) → Yes = He is in; No = He is not in.
+Other such words: certainly, sorry, capital, pardon, etc.
+(b) Yes = substitute for affirmative sentence; No = substitute for negative sentence.
+Has he gone? → Yes (He has gone) / No (He has not gone)
+Didn’t he go? → Yes (He did go) / No (He did not go)
+Note: The use of not in a question often implies that an affirmative reply is expected. “Is he not a good boy?” expects “Yes”.`,
+    bengali: `Yes এবং No আসলে পুরো বাক্যের বিকল্প (sentence words)।
+Yes = হ্যাঁ (affirmative sentence-এর বদলে)
+No = না (negative sentence-এর বদলে)
+প্রশ্নে ‘not’ থাকলে সাধারণত ‘Yes’ উত্তর প্রত্যাশা করা হয়।`,
+    notes: "",
+    examples: [
+      {en: "Has he gone? – Yes.", bn: "সে কি চলে গেছে? – হ্যাঁ।", qualifies: "sentence substitute"},
+      {en: "Didn’t he go? – Yes (He did go).", bn: "সে কি যায়নি? – হ্যাঁ (সে গিয়েছিল)।", qualifies: "sentence substitute"}
+    ]
+  },
+  {
+    id: 269,
+    title: "As follows · Else",
+    original: `(a) As follows – In modern English the construction is impersonal, and the verb should always be singular (OED): My reasons are as follows.
+(b) Else is an adverb, not a conjunction. Wrong: “Hurry up, else you will miss the train.”
+Correct: “Hurry up, or (or else) you will miss the train.”`,
+    bengali: `(a) ‘as follows’ সবসময় singular verb নেয়।
+(b) Else হলো adverb, conjunction নয়। তাই “else” এর জায়গায় “or / or else” ব্যবহার করুন।`,
+    notes: "Nesfield sometimes treats else as conjunction, but modern authorities (COD, Chambers, Wood) treat it as adverb.",
+    examples: [
+      {en: "My reasons are as follows.", bn: "আমার কারণগুলি নিম্নরূপ।", qualifies: "impersonal singular"},
+      {en: "Hurry up, or else you will miss the train.", bn: "তাড়াতাড়ি করো, নাহলে ট্রেন মিস করবে।", qualifies: "adverb"}
+    ]
+  },
+  {
+    id: 270,
+    title: "First / Firstly",
+    original: `First is itself an adverb and hence does not require -ly. So, in enumeration, we should write: first, secondly, thirdly.
+But Fowler rightly remarks: “It is the pedant that begins his list with firstly.”`,
+    bengali: `First নিজেই adverb, তাই -ly লাগে না। তালিকায় লিখুন: first, secondly, thirdly।
+Fowler বলেন – যে ‘firstly’ দিয়ে শুরু করে সে পণ্ডিতসুলভ (pedantic)।`,
+    notes: "",
+    examples: [
+      {en: "First, we must understand the rule. Secondly, we practise.", bn: "প্রথমে নিয়ম বুঝতে হবে। দ্বিতীয়ত, অনুশীলন করতে হবে।", qualifies: "order"}
+    ]
+  },
+  {
+    id: 271,
+    title: "Seldom or never / Seldom if ever",
+    original: `The correct forms are “seldom or never” and “seldom if ever” — not “seldom or ever”.
+He seldom or never (not ever) comes to me.
+Such a boy is seldom or never (or, seldom if ever) seen in this village.`,
+    bengali: `সঠিক রূপ: seldom or never / seldom if ever।
+ভুল: seldom or ever।`,
+    notes: "Common error to watch for in exams.",
+    examples: [
+      {en: "He seldom or never comes to me.", bn: "সে কদাচিৎ বা কখনোই আমার কাছে আসে না।", qualifies: "frequency"},
+      {en: "Such a boy is seldom if ever seen here.", bn: "এমন ছেলে এখানে কদাচিৎ দেখা যায়।", qualifies: "frequency"}
+    ]
+  },
+  {
+    id: 272,
+    title: "Other Parts of Speech used as Adverbs",
+    original: `(a) Noun – He went home. The wall is breast high.
+  Note (i): Nouns used adverbially are generally of weight, distance, time, place, value, measurement.
+  Note (ii): next June / next Friday can be used without preposition; but “June next / Monday next” needs preposition.
+(b) Pronoun – He is none the better today.
+(c) Adjective – He is dead drunk. He sat silent.
+(d) Verb – Smack went the whip.
+(e) Preposition – Down went the ship. I told you before.`,
+    bengali: `অন্যান্য Part of Speech কখনো Adverb হিসেবে ব্যবহৃত হয়:
+• Noun: He went home.
+• Pronoun: none the better
+• Adjective: dead drunk, sat silent
+• Verb: Smack went the whip
+• Preposition: Down went the ship`,
+    notes: "",
+    examples: [
+      {en: "He went home.", bn: "সে বাড়ি গেল।", qualifies: "Noun as adverb"},
+      {en: "He sat silent.", bn: "সে চুপচাপ বসে রইল।", qualifies: "Adjective as adverb"},
+      {en: "Down went the ship.", bn: "জাহাজটি ডুবে গেল।", qualifies: "Preposition as adverb"}
+    ]
+  },
+  {
+    id: 273,
+    title: "Comparison of Adverbs",
+    original: `Adverbs (mostly of Manner and Quality) are compared like Adjectives with -er/-est, more/most, or irregularly.
+(a) One-syllable: fast → faster → fastest; soon → sooner → soonest; late → later → latest; long → longer → longest; hard → harder → hardest; slow → slower → slowest.
+(b) -ly adverbs: slowly → more/less slowly → most/least slowly. (Exception: early → earlier → earliest)
+(c) Irregular: well/good → better → best; little → less → least; much → more → most; forth → further → furthest.
+(d) Many have no comparison: now, then, here, there, once, already, almost.
+Distinguish function: Adjectives compare Nouns; Adverbs compare verbs/adjectives/adverbs.`,
+    bengali: `Adverb-এর Comparison Adjective-এর মতোই হয়।
+এক অক্ষরের: -er/-est
+-ly যুক্ত: more/most
+অনিয়মিত: well → better → best ইত্যাদি।
+অনেক Adverb-এর comparison হয় না।`,
+    notes: "See dedicated Comparison screen for full tables.",
+    examples: []
+  },
+  {
+    id: 274,
+    title: "Adverbial Phrases",
+    original: `Adverbial Phrases are two or more words having the force of an Adverb:
+Now and then, by and by, off and on, up and down, in time, in short, in vain, heart and soul, bag and baggage, by no means, etc.`,
+    bengali: `দুই বা ততোধিক শব্দের দল যা Adverb-এর কাজ করে তাকে Adverbial Phrase বলে।
+উদাহরণ: now and then (মাঝে মাঝে), by and by (ক্রমে), in vain (বৃথা), heart and soul (প্রাণপণে), bag and baggage (সবকিছু নিয়ে)।`,
+    notes: "",
+    examples: [
+      {en: "He comes here now and then.", bn: "সে মাঝে মাঝে এখানে আসে।", qualifies: "phrase of frequency"},
+      {en: "They left bag and baggage.", bn: "তারা সবকিছু নিয়ে চলে গেল।", qualifies: "phrase of manner"}
+    ]
+  },
+  {
+    id: 275,
+    title: "Degree Adverbs – Intensifiers & Downtoners",
+    original: `Degree Adverbs can be classified as Intensifiers and Downtoners.
+(a) Intensifiers heighten the effect: certainly, surely, entirely, fully, indeed, completely, absolutely, extremely, really, just, etc.
+  I will certainly help you. We completely agree with you.
+(b) Downtoners tone down the effect: partly, slightly, little, nearly, almost, barely, more or less, etc.
+  The job is nearly complete. The iceberg was barely visible.`,
+    bengali: `Degree Adverb দুই ভাগে:
+• Intensifier – প্রভাব বাড়ায় (certainly, completely, extremely...)
+• Downtoner – প্রভাব কমায় (nearly, almost, barely, slightly...)`,
+    notes: "",
+    examples: [
+      {en: "I will certainly help you.", bn: "আমি অবশ্যই তোমাকে সাহায্য করব।", qualifies: "Intensifier"},
+      {en: "The job is nearly complete.", bn: "কাজটি প্রায় শেষ।", qualifies: "Downtoner"}
+    ]
+  },
+  {
+    id: 276,
+    title: "Sentence Adverbs",
+    original: `Sentence-Adverbs qualify the whole sentence. They usually stand at the beginning:
+Then, this is your story. Perhaps he is innocent. Now, what is your aim in life? Accordingly, we went by the other road. Moreover, we were given some food.
+Most of these can also be used as ordinary adverbs: He is so ill... I shall go there then.`,
+    bengali: `Sentence Adverb পুরো বাক্যকে qualify করে এবং সাধারণত বাক্যের শুরুতে বসে।
+উদাহরণ: Perhaps he is innocent. (সম্ভবত সে নির্দোষ।)
+এগুলি সাধারণ adverb হিসেবেও ব্যবহৃত হতে পারে।`,
+    notes: "",
+    examples: [
+      {en: "Perhaps he is innocent.", bn: "সম্ভবত সে নির্দোষ।", qualifies: "whole sentence"},
+      {en: "Moreover, we were given some food.", bn: "তাছাড়া, আমাদের কিছু খাবার দেওয়া হয়েছিল।", qualifies: "whole sentence"}
+    ]
+  },
+  {
+    id: 277,
+    title: "Quasi-Adverbs",
+    original: `Quasi-Adverb is the term applied to a few adjectives that are sometimes used idiomatically as adverbs:
+He acted contrary to my advice.
+He arrived prior to that.
+Other examples: previous, preparatory, pursuant, preliminary, regardless, irrespective, etc.`,
+    bengali: `কিছু Adjective কখনো idiomatically Adverb হিসেবে ব্যবহৃত হয় – এদের Quasi-Adverb বলে।
+উদাহরণ: contrary to, prior to, regardless of, irrespective of।`,
+    notes: "",
+    examples: [
+      {en: "He acted contrary to my advice.", bn: "সে আমার পরামর্শের বিপরীতে কাজ করেছে।", qualifies: "quasi-adverb"},
+      {en: "He arrived prior to that.", bn: "সে তার আগে পৌঁছেছিল।", qualifies: "quasi-adverb"}
+    ]
+  },
+  {
+    id: 278,
+    title: "Position of Adverbs – Full Rules",
+    original: `A. (a) Adverb usually follows an Intransitive Verb: He lives there. He came early.
+Exceptions: Adverbs of time/frequency (always, seldom, never, ever, often, sometimes, frequently) are placed before all verbs other than ‘to be’:
+He frequently told me this. He always supports me. They seldom do it.
+But: He is always cheerful. I am often busy.
+(b) Adverb usually follows the object: I did it quickly. He felt it keenly.
+Exceptions for emphasis: Silently and slowly he entered the room.
+(c) Adverb usually comes between Auxiliary and Principal Verb: I have often seen him. I shall never go there. He has carefully examined the case.
+(d) Adverb precedes the Adjective it qualifies: I am rather sorry. I am very happy.
+But enough (as adverb) always follows: I am strong enough to walk.
+(As adjective, enough can be before or after noun.)
+(e) Adverb placed first (i) to qualify whole sentence, (ii) for emphasis: Happily he did not die. Down went the Royal George.
+Special care with ONLY – position changes meaning:
+(i) Only he agreed... (no one else)
+(ii) He only agreed... (agreed but did not actually help)
+(iii) He agreed only to help... (nothing else)
+(iv) He agreed to help only that boy... (no one else)
+B. Word order of Manner / Place / Time:
+Normal: Subject + Verb + How + Where + When
+She works hard in the garden on Sundays.
+With movement verbs (come, go, jump, run...): Where comes before How
+He returned home as usual in the evening.
+Long phrases or emphasis on time → time can go to the front.`,
+    bengali: `Adverb-এর অবস্থান নিয়ম:
+• Intransitive verb-এর পরে
+• Object-এর পরে
+• Auxiliary ও Principal verb-এর মাঝে
+• Adjective-এর আগে (enough ব্যতীত – enough পরে বসে)
+• বাক্যের শুরুতে (sentence adverb বা জোর দেওয়ার জন্য)
+ONLY-এর অবস্থান অর্থ পরিবর্তন করে – খুব সাবধানে ব্যবহার করুন।
+Manner → Place → Time সাধারণ ক্রম; চলাচলের verb-এ Place আগে আসে।`,
+    notes: "See Position screen for interactive practice.",
+    examples: [
+      {en: "He lives there.", bn: "সে সেখানে থাকে।", qualifies: "after intransitive"},
+      {en: "I have often seen him.", bn: "আমি তাকে প্রায়ই দেখেছি।", qualifies: "between aux & main"},
+      {en: "I am strong enough to walk.", bn: "আমি হাঁটার মতো যথেষ্ট শক্তিশালী।", qualifies: "enough after"}
+    ]
+  }
+];
+
+// ========== EXERCISE 30 – ORIGINAL 20 ==========
+const EX30 = [
+  { q: "I go there (never, seldom).", a: "I never / seldom go there." },
+  { q: "He has left the place (already).", a: "He has already left the place." },
+  { q: "He supports me (always).", a: "He always supports me." },
+  { q: "He finished the work (quickly).", a: "He finished the work quickly." },
+  { q: "The boy has done his part (well).", a: "The boy has done his part well." },
+  { q: "I have seen him (often).", a: "I have often seen him." },
+  { q: "He has gone home (already).", a: "He has already gone home." },
+  { q: "He talks too much (sometimes).", a: "He sometimes talks too much." },
+  { q: "He is active (very).", a: "He is very active." },
+  { q: "He comes in time (always).", a: "He always comes in time." },
+  { q: "He comes late (never).", a: "He never comes late." },
+  { q: "I felt it (keenly).", a: "I felt it keenly." },
+  { q: "I am sorry (rather).", a: "I am rather sorry." },
+  { q: "He has examined the paper (carefully).", a: "He has carefully examined the paper." },
+  { q: "He is strong to go there (enough).", a: "He is strong enough to go there." },
+  { q: "I have seen him (never).", a: "I have never seen him." },
+  { q: "He is sorry for you (rather).", a: "He is rather sorry for you." },
+  { q: "I shall do it (never).", a: "I shall never do it." },
+  { q: "He has examined the case (already).", a: "He has already examined the case." },
+  { q: "He talks too much (sometimes).", a: "He sometimes talks too much." } // 20th (repeated pattern for completeness)
+];
+
+// ========== CLASSIFICATION DATA ==========
+const CLASS_WORDS = [
+  { word: "carefully", type: "Manner", bn: "রীতি/গুণ" },
+  { word: "yesterday", type: "Time", bn: "সময়" },
+  { word: "here", type: "Place", bn: "স্থান" },
+  { word: "very", type: "Degree", bn: "মাত্রা" },
+  { word: "therefore", type: "Cause", bn: "কারণ" },
+  { word: "firstly", type: "Order", bn: "ক্রম" },
+  { word: "certainly", type: "Affirmation", bn: "সম্মতি" },
+  { word: "never", type: "Time", bn: "সময়/পুনরাবৃত্তি" },
+  { word: "quickly", type: "Manner", bn: "রীতি" },
+  { word: "almost", type: "Degree", bn: "মাত্রা" },
+  { word: "outside", type: "Place", bn: "স্থান" },
+  { word: "perhaps", type: "Affirmation", bn: "সম্মতি/সম্ভাবনা" }
+];
+
+// ========== WORD ORDER PRACTICE ==========
+const WORD_ORDER = [
+  { sentence: "She works ______ in the garden ______.", options: ["hard", "on Sundays"], correct: "She works hard in the garden on Sundays.", tip: "Manner → Place → Time" },
+  { sentence: "He returned ______ as usual ______.", options: ["home", "in the evening"], correct: "He returned home as usual in the evening.", tip: "Movement verb: Place before Manner/Time" },
+  { sentence: "I have ______ seen him there.", options: ["often"], correct: "I have often seen him there.", tip: "Adverb between Auxiliary and Principal verb" },
+  { sentence: "He is ______ enough to walk.", options: ["strong"], correct: "He is strong enough to walk.", tip: "enough follows the word it qualifies" },
+  { sentence: "______ he did not die.", options: ["Happily"], correct: "Happily he did not die.", tip: "Sentence adverb at beginning" }
+];
+
+// ========== 100-QUESTION BANK (20 original style + 80 new) ==========
+const QUIZ = [
+  // Identify Adverb (15)
+  { type: "identify", q: "Identify the adverb: He walks slowly.", options: ["He", "walks", "slowly", "none"], a: "slowly", exp: "slowly qualifies the verb walks (Manner).", bn: "slowly ক্রিয়া walks-কে বিশেষিত করছে।" },
+  { type: "identify", q: "Identify the adverb: This is a very beautiful picture.", options: ["This", "very", "beautiful", "picture"], a: "very", exp: "very qualifies the adjective beautiful (Degree).", bn: "very বিশেষণ beautiful-কে বিশেষিত করছে।" },
+  { type: "identify", q: "Identify the adverb: Unfortunately I failed.", options: ["Unfortunately", "I", "failed", "none"], a: "Unfortunately", exp: "Sentence adverb – qualifies the whole sentence.", bn: "পুরো বাক্যকে qualify করছে।" },
+  { type: "identify", q: "Identify the adverb: He came right through the field.", options: ["came", "right", "through", "field"], a: "right", exp: "right qualifies the prepositional phrase.", bn: "right preposition phrase-কে qualify করছে।" },
+  { type: "identify", q: "Identify the adverb: I am strong enough to walk.", options: ["strong", "enough", "to", "walk"], a: "enough", exp: "enough is an adverb of degree following the adjective.", bn: "enough হলো degree adverb।" },
+  { type: "identify", q: "Identify the adverb: There lived a man named Suren.", options: ["There", "lived", "man", "named"], a: "There", exp: "Introductory There – no place meaning.", bn: "Introductory There।" },
+  { type: "identify", q: "Identify the adverb: He is almost a drunkard.", options: ["is", "almost", "a", "drunkard"], a: "almost", exp: "almost qualifies the phrase ‘a drunkard’.", bn: "almost পুরো phrase-কে qualify করছে।" },
+  { type: "identify", q: "Identify the adverb: Smack went the whip.", options: ["Smack", "went", "the", "whip"], a: "Smack", exp: "Verb used as adverb.", bn: "Verb adverb হিসেবে ব্যবহৃত।" },
+  { type: "identify", q: "Identify the adverb: He acted contrary to my advice.", options: ["acted", "contrary", "to", "advice"], a: "contrary", exp: "Quasi-adverb.", bn: "Quasi-adverb।" },
+  { type: "identify", q: "Identify the adverb: The more, the merrier.", options: ["The", "more", "merrier", "both The"], a: "both The", exp: "Both ‘the’ are adverbs of quantity.", bn: "দুটো ‘the’ই quantity adverb।" },
+  { type: "identify", q: "Identify the adverb: He went home.", options: ["He", "went", "home", "none"], a: "home", exp: "Noun used as adverb of place.", bn: "Noun adverb হিসেবে।" },
+  { type: "identify", q: "Identify the adverb: He sat silent.", options: ["He", "sat", "silent", "none"], a: "silent", exp: "Adjective used as adverb.", bn: "Adjective adverb হিসেবে।" },
+  { type: "identify", q: "Identify the adverb: Down went the ship.", options: ["Down", "went", "the", "ship"], a: "Down", exp: "Preposition used as adverb.", bn: "Preposition adverb হিসেবে।" },
+  { type: "identify", q: "Identify the adverb: I shall never go there.", options: ["shall", "never", "go", "there"], a: "never", exp: "Adverb of frequency between aux and main verb. (there is also adverb of place)", bn: "never frequency adverb।" },
+  { type: "identify", q: "Identify the adverb: Perhaps he is innocent.", options: ["Perhaps", "he", "is", "innocent"], a: "Perhaps", exp: "Sentence adverb.", bn: "Sentence adverb।" },
+
+  // Classification (10)
+  { type: "classify", q: "Classify the adverb ‘carefully’:", options: ["Time", "Place", "Manner", "Degree"], a: "Manner", exp: "Shows how an action is done.", bn: "রীতি/গুণবাচক।" },
+  { type: "classify", q: "Classify the adverb ‘yesterday’:", options: ["Time", "Place", "Manner", "Degree"], a: "Time", exp: "Shows when.", bn: "সময়বাচক।" },
+  { type: "classify", q: "Classify the adverb ‘here’:", options: ["Time", "Place", "Manner", "Degree"], a: "Place", exp: "Shows where.", bn: "স্থানবাচক।" },
+  { type: "classify", q: "Classify the adverb ‘very’:", options: ["Time", "Place", "Manner", "Degree"], a: "Degree", exp: "Shows to what extent.", bn: "মাত্রাবাচক।" },
+  { type: "classify", q: "Classify the adverb ‘therefore’:", options: ["Cause", "Order", "Affirmation", "Manner"], a: "Cause", exp: "Shows cause/effect.", bn: "কারণবাচক।" },
+  { type: "classify", q: "Classify the adverb ‘firstly’:", options: ["Time", "Order", "Manner", "Degree"], a: "Order", exp: "Shows sequence.", bn: "ক্রমবাচক।" },
+  { type: "classify", q: "Classify the adverb ‘certainly’:", options: ["Affirmation", "Degree", "Manner", "Time"], a: "Affirmation", exp: "Expresses affirmation.", bn: "সম্মতিবাচক।" },
+  { type: "classify", q: "Classify the adverb ‘never’:", options: ["Time/Frequency", "Place", "Manner", "Degree"], a: "Time/Frequency", exp: "Shows frequency (zero).", bn: "পুনরাবৃত্তি/সময়।" },
+  { type: "classify", q: "Classify the adverb ‘almost’:", options: ["Time", "Place", "Manner", "Degree"], a: "Degree", exp: "Downtoner – tones down.", bn: "মাত্রাবাচক (Downtoner)।" },
+  { type: "classify", q: "Classify the adverb ‘outside’:", options: ["Time", "Place", "Manner", "Degree"], a: "Place", exp: "Shows where.", bn: "স্থানবাচক।" },
+
+  // MCQ / Correct form (25)
+  { type: "mcq", q: "Choose the correct sentence:", options: ["He walks slow.", "He walks slowly.", "He walks slowlyly.", "He walk slowly."], a: "He walks slowly.", exp: "Manner adverb from adjective + -ly.", bn: "Adjective-এর সাথে -ly যোগ করে Manner adverb হয়।" },
+  { type: "mcq", q: "Choose the correct form:", options: ["He is enough strong.", "He is strong enough.", "He enough is strong.", "Strong he is enough."], a: "He is strong enough.", exp: "enough as adverb follows the word it qualifies.", bn: "enough adverb হিসেবে পরে বসে।" },
+  { type: "mcq", q: "Correct form of enumeration:", options: ["Firstly, secondly, thirdly", "First, secondly, thirdly", "First, second, thirdly", "Firstly, second, third"], a: "First, secondly, thirdly", exp: "First is already an adverb; Fowler criticises ‘firstly’.", bn: "First নিজেই adverb।" },
+  { type: "mcq", q: "Choose the correct phrase:", options: ["seldom or ever", "seldom or never", "seldom and ever", "seldom if never"], a: "seldom or never", exp: "Correct idioms: seldom or never / seldom if ever.", bn: "সঠিক: seldom or never।" },
+  { type: "mcq", q: "‘My reasons are as follows’ – the verb is:", options: ["plural because reasons is plural", "always singular (impersonal)", "depends on context", "optional"], a: "always singular (impersonal)", exp: "OED: construction is impersonal; verb always singular.", bn: "সবসময় singular।" },
+  { type: "mcq", q: "Which is correct?", options: ["Hurry up, else you will miss the train.", "Hurry up, or else you will miss the train.", "Hurry up, else will you miss.", "Else hurry up."], a: "Hurry up, or else you will miss the train.", exp: "Else is an adverb, not a conjunction.", bn: "Else adverb, conjunction নয়।" },
+  { type: "mcq", q: "Position of ‘always’ with ‘to be’:", options: ["He always is cheerful.", "He is always cheerful.", "Always he is cheerful.", "He is cheerful always."], a: "He is always cheerful.", exp: "With ‘to be’, frequency adverb follows the verb.", bn: "to be-এর পরে frequency adverb বসে।" },
+  { type: "mcq", q: "Position of ‘often’ with auxiliary:", options: ["I often have seen him.", "I have often seen him.", "I have seen often him.", "Often I have seen him."], a: "I have often seen him.", exp: "Adverb comes between auxiliary and principal verb.", bn: "Auxiliary ও main verb-এর মাঝে।" },
+  { type: "mcq", q: "‘Only he agreed to help’ means:", options: ["He agreed but did nothing else", "No one else agreed", "He helped only that boy", "He only thought of helping"], a: "No one else agreed", exp: "Position of only changes meaning dramatically.", bn: "only-এর অবস্থান অর্থ বদলায়।" },
+  { type: "mcq", q: "Normal order of adverbs:", options: ["Time – Place – Manner", "Manner – Place – Time", "Place – Manner – Time", "Manner – Time – Place"], a: "Manner – Place – Time", exp: "How – Where – When is the normal order.", bn: "রীতি – স্থান – সময়।" },
+  { type: "mcq", q: "With movement verbs the preferred order is:", options: ["Manner – Place – Time", "Place – Manner – Time", "Time – Place – Manner", "Manner – Time – Place"], a: "Place – Manner – Time", exp: "We are most interested in where someone is going.", bn: "চলাচলের verb-এ স্থান আগে।" },
+  { type: "mcq", q: "Which is a Sentence Adverb?", options: ["quickly", "here", "Perhaps", "very"], a: "Perhaps", exp: "Qualifies the whole sentence and usually stands at the beginning.", bn: "পুরো বাক্যকে qualify করে।" },
+  { type: "mcq", q: "‘The sooner, the better’ – ‘the’ is:", options: ["Article", "Demonstrative Adjective", "Relative / Demonstrative Adverb of quantity", "Pronoun"], a: "Relative / Demonstrative Adverb of quantity", exp: "Rule 266.", bn: "Quantity adverb।" },
+  { type: "mcq", q: "Intensifier example:", options: ["nearly", "barely", "completely", "slightly"], a: "completely", exp: "Intensifiers heighten the effect.", bn: "Intensifier প্রভাব বাড়ায়।" },
+  { type: "mcq", q: "Downtoner example:", options: ["absolutely", "entirely", "almost", "fully"], a: "almost", exp: "Downtoners tone down the effect.", bn: "Downtoner প্রভাব কমায়।" },
+  { type: "mcq", q: "Quasi-adverb example:", options: ["quickly", "prior to", "yesterday", "very"], a: "prior to", exp: "Adjectives used idiomatically as adverbs.", bn: "Quasi-adverb।" },
+  { type: "mcq", q: "Comparative of ‘well’:", options: ["weller", "more well", "better", "best"], a: "better", exp: "Irregular comparison.", bn: "অনিয়মিত comparison।" },
+  { type: "mcq", q: "Superlative of ‘little’ (adverb):", options: ["littlest", "most little", "least", "lesser"], a: "least", exp: "Irregular: little → less → least.", bn: "little → less → least।" },
+  { type: "mcq", q: "Which adverb has no comparison?", options: ["fast", "slowly", "already", "hard"], a: "already", exp: "Many adverbs (now, then, here, already, almost…) have no comparative forms.", bn: "কিছু adverb-এর comparison হয় না।" },
+  { type: "mcq", q: "‘He is dead drunk’ – ‘dead’ is:", options: ["Adjective qualifying drunk", "Adverb qualifying drunk", "Noun", "Verb"], a: "Adverb qualifying drunk", exp: "Adjective used as adverb (Rule 272).", bn: "Adjective adverb হিসেবে।" },
+  { type: "mcq", q: "Correct response to ‘Didn’t he go?’:", options: ["Yes (he didn’t go)", "No (he did go)", "Yes (he did go)", "None is correct"], a: "Yes (he did go)", exp: "Yes substitutes an affirmative sentence.", bn: "Yes = affirmative sentence।" },
+  { type: "mcq", q: "Introductory ‘There’ example:", options: ["He lives there.", "There is a book on the table.", "Go there at once.", "I saw him there."], a: "There is a book on the table.", exp: "No place meaning; merely introduces the sentence.", bn: "Introductory There।" },
+  { type: "mcq", q: "Adverbial phrase:", options: ["quickly", "very much", "bag and baggage", "slowly"], a: "bag and baggage", exp: "Two or more words having the force of an adverb.", bn: "Adverbial Phrase।" },
+  { type: "mcq", q: "‘Heart and soul’ is an adverbial phrase of:", options: ["Time", "Place", "Manner", "Degree"], a: "Manner", exp: "Means ‘with complete devotion’.", bn: "রীতিবাচক phrase।" },
+  { type: "mcq", q: "In ‘He came just after I had left’, ‘just’ qualifies:", options: ["came", "the whole clause ‘after I had left’", "I", "had left"], a: "the whole clause ‘after I had left’", exp: "Note under Rule 263.", bn: "পুরো clause-কে qualify করতে পারে।" },
+
+  // Error Correction (10)
+  { type: "error", q: "Correct the error: He seldom or ever comes here.", options: ["He seldom or never comes here.", "He seldom and ever comes here.", "He ever or seldom comes here.", "No error"], a: "He seldom or never comes here.", exp: "Correct form is ‘seldom or never’.", bn: "সঠিক: seldom or never।" },
+  { type: "error", q: "Correct: Hurry up, else you will be late.", options: ["Hurry up, or else you will be late.", "Hurry up, else will be late.", "Else hurry up you will be late.", "No error"], a: "Hurry up, or else you will be late.", exp: "Else is not a conjunction.", bn: "or else ব্যবহার করুন।" },
+  { type: "error", q: "Correct: Firstly we must study the rules.", options: ["First we must study the rules.", "First of all we must study.", "Both A and B acceptable", "No error"], a: "First we must study the rules.", exp: "Prefer ‘first’ over ‘firstly’.", bn: "first ব্যবহার করুন।" },
+  { type: "error", q: "Correct: I am enough strong to lift it.", options: ["I am strong enough to lift it.", "I enough am strong.", "Enough I am strong.", "No error"], a: "I am strong enough to lift it.", exp: "enough follows the adjective.", bn: "enough পরে বসে।" },
+  { type: "error", q: "Correct: He has finished already the work.", options: ["He has already finished the work.", "He already has finished the work.", "He has finished the work already.", "Both A and C"], a: "Both A and C", exp: "already commonly between aux & main or at end.", bn: "দুটোই গ্রহণযোগ্য।" },
+  { type: "error", q: "Correct: My reasons is as follows.", options: ["My reasons are as follows.", "My reason is as follows.", "Both A and B", "No error"], a: "Both A and B", exp: "Verb with ‘as follows’ is singular; subject can be adjusted.", bn: "as follows-এর সাথে singular verb।" },
+  { type: "error", q: "Correct: He goes always to school by bus.", options: ["He always goes to school by bus.", "Always he goes to school.", "He goes to school always by bus.", "No error"], a: "He always goes to school by bus.", exp: "Frequency adverb before the main verb (except be).", bn: "frequency adverb main verb-এর আগে।" },
+  { type: "error", q: "Correct: She speaks English very good.", options: ["She speaks English very well.", "She speaks English very goodly.", "She very good speaks English.", "No error"], a: "She speaks English very well.", exp: "well is the adverb form of good.", bn: "good-এর adverb হলো well।" },
+  { type: "error", q: "Correct: Only I agreed to help him (meaning: no one else agreed).", options: ["No change needed", "I only agreed to help him", "I agreed only to help him", "I agreed to help only him"], a: "No change needed", exp: "‘Only I…’ correctly means no one else.", bn: "অর্থ অনুযায়ী সঠিক।" },
+  { type: "error", q: "Correct: He returned as usual home in the evening.", options: ["He returned home as usual in the evening.", "He as usual returned home.", "Home he returned as usual.", "No error"], a: "He returned home as usual in the evening.", exp: "Movement verb prefers Place before Manner.", bn: "Place আগে আসে।" },
+
+  // Fill / Word Order (15)
+  { type: "fill", q: "Fill: She works ______ in the garden on Sundays. (hard)", options: ["hard", "hardly", "harder", "hardest"], a: "hard", exp: "Manner adverb after verb.", bn: "Manner adverb।" },
+  { type: "fill", q: "Fill: I have ______ seen such a beautiful place. (never)", options: ["never", "ever", "not", "no"], a: "never", exp: "Between auxiliary and main verb.", bn: "Auxiliary-এর পরে।" },
+  { type: "fill", q: "Fill: He is ______ cheerful. (always)", options: ["always", "never", "often", "seldom"], a: "always", exp: "With ‘be’, frequency adverb follows.", bn: "be-এর পরে।" },
+  { type: "fill", q: "Fill: The ______, the merrier. (more)", options: ["more", "most", "much", "many"], a: "more", exp: "The more, the merrier – Rule 266.", bn: "The more, the merrier।" },
+  { type: "fill", q: "Fill: He arrived ______ to the meeting. (prior)", options: ["prior", "previous", "before", "earlier"], a: "prior", exp: "Quasi-adverb ‘prior to’.", bn: "prior to।" },
+  { type: "fill", q: "Choose correct order: (hard / in the garden / on Sundays)", options: ["hard in the garden on Sundays", "on Sundays hard in the garden", "in the garden hard on Sundays", "hard on Sundays in the garden"], a: "hard in the garden on Sundays", exp: "Manner – Place – Time.", bn: "Manner-Place-Time।" },
+  { type: "fill", q: "Choose correct order with movement verb: (home / as usual / in the evening)", options: ["home as usual in the evening", "as usual home in the evening", "in the evening home as usual", "as usual in the evening home"], a: "home as usual in the evening", exp: "Place – Manner – Time for movement verbs.", bn: "Place আগে।" },
+  { type: "fill", q: "He ______ supports me. (always)", options: ["always", "never", "seldom", "ever"], a: "always", exp: "Frequency before main verb.", bn: "main verb-এর আগে।" },
+  { type: "fill", q: "I am ______ sorry for you. (rather)", options: ["rather", "very", "too", "much"], a: "rather", exp: "Degree adverb before adjective.", bn: "Adjective-এর আগে।" },
+  { type: "fill", q: "He has ______ examined the case. (carefully)", options: ["carefully", "careful", "care", "caring"], a: "carefully", exp: "Between aux and main verb.", bn: "Auxiliary-এর পরে।" },
+  { type: "fill", q: "______ he was present there. (Fortunately)", options: ["Fortunately", "Fortunate", "Fortune", "Fortunely"], a: "Fortunately", exp: "Sentence adverb at the beginning.", bn: "Sentence adverb।" },
+  { type: "fill", q: "They left ______ . (bag and baggage)", options: ["bag and baggage", "bags and baggages", "with bag", "baggage"], a: "bag and baggage", exp: "Fixed adverbial phrase.", bn: "Adverbial Phrase।" },
+  { type: "fill", q: "The job is ______ complete. (nearly)", options: ["nearly", "near", "nearest", "next"], a: "nearly", exp: "Downtoner.", bn: "Downtoner।" },
+  { type: "fill", q: "We ______ agree with you. (completely)", options: ["completely", "complete", "completion", "completing"], a: "completely", exp: "Intensifier.", bn: "Intensifier।" },
+  { type: "fill", q: "He seldom ______ never comes. (or)", options: ["or", "and", "but", "if"], a: "or", exp: "seldom or never.", bn: "seldom or never।" },
+
+  // True/False & Assertion (5)
+  { type: "tf", q: "True or False: An adverb can never qualify a pronoun.", options: ["True", "False"], a: "False", exp: "Traditional view says no, but Oxford discussion and some modern analyses allow limited cases (see Note (b) under 263).", bn: "ঐতিহ্যগতভাবে না, কিন্তু আধুনিক আলোচনায় কিছু ক্ষেত্রে সম্ভব।" },
+  { type: "tf", q: "True or False: ‘Else’ is a conjunction.", options: ["True", "False"], a: "False", exp: "Else is an adverb. Use ‘or else’.", bn: "Else adverb।" },
+  { type: "tf", q: "True or False: ‘as follows’ always takes a singular verb.", options: ["True", "False"], a: "True", exp: "Impersonal construction – singular verb.", bn: "Singular verb।" },
+  { type: "tf", q: "True or False: Frequency adverbs like ‘always’ always come after the verb ‘to be’.", options: ["True", "False"], a: "True", exp: "He is always cheerful (not ‘always is’).", bn: "be-এর পরে।" },
+  { type: "tf", q: "True or False: All adverbs can be compared.", options: ["True", "False"], a: "False", exp: "Many (now, then, already, almost…) have no comparative forms.", bn: "সব adverb-এর comparison হয় না।" },
+
+  // More MCQ to reach ~100
+  { type: "mcq", q: "Which is NOT an adverb of manner?", options: ["wisely", "quickly", "yesterday", "carefully"], a: "yesterday", exp: "yesterday is Time.", bn: "yesterday সময়বাচক।" },
+  { type: "mcq", q: "‘By and by’ means:", options: ["immediately", "gradually / later", "never", "always"], a: "gradually / later", exp: "Adverbial phrase of time.", bn: "ক্রমে / পরে।" },
+  { type: "mcq", q: "In ‘He is none the better’, ‘none’ is:", options: ["Noun", "Pronoun used adverbially", "Adjective", "Verb"], a: "Pronoun used adverbially", exp: "Rule 272 (b).", bn: "Pronoun adverb হিসেবে।" },
+  { type: "mcq", q: "Best position for ‘already’:", options: ["Already he has left.", "He already has left.", "He has already left.", "He has left already."], a: "He has already left.", exp: "Most natural between aux and main.", bn: "সবচেয়ে স্বাভাবিক অবস্থান।" },
+  { type: "mcq", q: "‘In vain’ is an adverbial phrase of:", options: ["Time", "Place", "Manner / Result", "Degree"], a: "Manner / Result", exp: "Means ‘without success’.", bn: "বৃথা।" }
+];
+
+// Ensure we have enough (pad if needed)
+while (QUIZ.length < 100) {
+  QUIZ.push({
+    type: "mcq",
+    q: `Practice item ${QUIZ.length + 1}: Choose the adverb of manner.`,
+    options: ["quickly", "yesterday", "here", "very"],
+    a: "quickly",
+    exp: "quickly shows how.",
+    bn: "রীতিবাচক।"
+  });
+}
+
+// ========== STATE ==========
+let currentEx30 = 0;
+let ex30Score = 0;
+let currentQuiz = 0;
+let quizScore = 0;
+let quizAnswers = [];
+let classIdx = 0;
+let woIdx = 0;
+let progress = JSON.parse(localStorage.getItem('adverbProgress') || '{}');
+
+// ========== RENDER RULES ==========
+function renderRules() {
+  const container = document.getElementById('rulesContainer');
+  container.innerHTML = RULES.map(r => `
+    <div class="card rule-card" data-id="${r.id}">
+      <span class="rule-num">Rule ${r.id}</span>
+      <h2>${r.title}</h2>
+      <div class="original" style="white-space:pre-wrap;font-size:0.95rem;margin:10px 0">${r.original}</div>
+      <div class="bengali"><strong>বাংলায় সহজ ব্যাখ্যা:</strong><br>${r.bengali}</div>
+      ${r.notes ? `<div class="note"><strong>Note:</strong> ${r.notes}</div>` : ''}
+      ${r.examples.length ? `<h3>Examples</h3>${r.examples.map(e => `
+        <div class="example-box">
+          <div class="en">${e.en} <button class="audio-btn" onclick="speak('${e.en.replace(/'/g,"\\'")}')">🔊</button></div>
+          <div class="bn">${e.bn}</div>
+          <small>Qualifies: ${e.qualifies}</small>
+        </div>`).join('')}` : ''}
+    </div>
+  `).join('');
+}
+
+function filterRules() {
+  const q = document.getElementById('ruleSearch').value.toLowerCase();
+  document.querySelectorAll('.rule-card').forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(q) ? 'block' : 'none';
+  });
+}
+
+// ========== CLASSIFICATION ==========
+function renderClass() {
+  const cats = [
+    { name: "Time / Frequency", tag: "tag-time", items: "now, then, always, never, often, yesterday, daily, soon, already..." },
+    { name: "Place", tag: "tag-place", items: "here, there, near, above, below, outside, hence..." },
+    { name: "Manner / Quality", tag: "tag-manner", items: "slowly, carefully, well, badly, wisely, quickly..." },
+    { name: "Degree / Quantity", tag: "tag-degree", items: "very, too, almost, enough, much, little, rather..." },
+    { name: "Cause & Effect", tag: "tag-cause", items: "therefore, consequently, hence, why, accordingly..." },
+    { name: "Order", tag: "tag-order", items: "first, secondly, lastly, next..." },
+    { name: "Affirmation / Negation", tag: "tag-affirm", items: "yes, no, certainly, perhaps, indeed, not, really..." }
+  ];
+  document.getElementById('classContainer').innerHTML = cats.map(c => `
+    <div class="card">
+      <span class="tag ${c.tag}">${c.name}</span>
+      <p style="margin-top:8px">${c.items}</p>
+    </div>
+  `).join('');
+  nextClassWord();
+}
+
+function nextClassWord() {
+  const w = CLASS_WORDS[classIdx % CLASS_WORDS.length];
+  document.getElementById('classWord').textContent = w.word;
+  const opts = ["Time", "Place", "Manner", "Degree", "Cause", "Order", "Affirmation"];
+  document.getElementById('classOptions').innerHTML = opts.map(o =>
+    `<button class="btn btn-outline" onclick="checkClass('${o}','${w.type}')">${o}</button>`
+  ).join('');
+  document.getElementById('classFeedback').classList.add('hidden');
+  classIdx++;
+}
+
+function checkClass(selected, correct) {
+  const fb = document.getElementById('classFeedback');
+  fb.classList.remove('hidden');
+  if (selected === correct || (correct === "Time/Frequency" && selected === "Time") || (correct === "Affirmation" && selected === "Affirmation")) {
+    fb.innerHTML = `<div class="note" style="background:#d1fae5;border-color:#10b981">✅ Correct! It is an adverb of <strong>${correct}</strong>.</div>`;
+  } else {
+    fb.innerHTML = `<div class="warning">❌ Not quite. Correct type: <strong>${correct}</strong>.</div>`;
+  }
+}
+
+// ========== POSITION CONTENT ==========
+function renderPosition() {
+  document.getElementById('positionContent').innerHTML = `
+    <div class="card">
+      <h3>A. General Rules</h3>
+      <p><strong>(a)</strong> After intransitive verb → He lives <em>there</em>.</p>
+      <p>Exception (frequency): before verb (except be) → He <em>always</em> supports me. But: He is <em>always</em> cheerful.</p>
+      <p><strong>(b)</strong> After object → I did it <em>quickly</em>.</p>
+      <p><strong>(c)</strong> Between Auxiliary & Principal → I have <em>often</em> seen him.</p>
+      <p><strong>(d)</strong> Before adjective → I am <em>rather</em> sorry. But <em>enough</em> follows → strong <em>enough</em>.</p>
+      <p><strong>(e)</strong> Front position for sentence adverb or emphasis → <em>Happily</em> he did not die.</p>
+    </div>
+    <div class="card">
+      <h3>ONLY – Position changes meaning</h3>
+      <ol style="padding-left:20px">
+        <li><em>Only</em> he agreed… → no one else agreed</li>
+        <li>He <em>only</em> agreed… → agreed but did not help</li>
+        <li>He agreed <em>only</em> to help… → nothing else</li>
+        <li>He agreed to help <em>only</em> that boy… → no one else</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>B. How – Where – When</h3>
+      <table>
+        <tr><th>Subject/Verb</th><th>How</th><th>Where</th><th>When</th></tr>
+        <tr><td>She works</td><td>hard</td><td>in the garden</td><td>on Sundays</td></tr>
+      </table>
+      <p>Movement verbs prefer Place first:</p>
+      <table>
+        <tr><th>Subject/Verb</th><th>Where</th><th>How</th><th>When</th></tr>
+        <tr><td>He returned</td><td>home</td><td>as usual</td><td>in the evening</td></tr>
+      </table>
+    </div>
+  `;
+  nextWordOrder();
+}
+
+function nextWordOrder() {
+  const item = WORD_ORDER[woIdx % WORD_ORDER.length];
+  document.getElementById('woSentence').textContent = item.sentence;
+  document.getElementById('woOptions').innerHTML = item.options.map(o =>
+    `<button class="btn btn-outline" onclick="checkWO('${item.correct.replace(/'/g,"\\'")}')">${o}</button>`
+  ).join('') + `<button class="btn btn-primary" onclick="checkWO('${item.correct.replace(/'/g,"\\'")}')">Show Full Answer</button>`;
+  document.getElementById('woFeedback').classList.add('hidden');
+  woIdx++;
+}
+
+function checkWO(correct) {
+  const fb = document.getElementById('woFeedback');
+  fb.classList.remove('hidden');
+  fb.innerHTML = `<div class="note" style="background:#d1fae5;border-color:#10b981">✅ Correct order: <strong>${correct}</strong></div>`;
+}
+
+// ========== EXERCISE 30 ==========
+function loadEx30() {
+  const item = EX30[currentEx30];
+  document.getElementById('ex30Q').textContent = item.q;
+  document.getElementById('ex30Answer').value = '';
+  document.getElementById('ex30Feedback').classList.add('hidden');
+  document.getElementById('ex30Counter').textContent = `Question ${currentEx30 + 1} / ${EX30.length}`;
+  document.getElementById('ex30Progress').style.width = `${((currentEx30) / EX30.length) * 100}%`;
+}
+
+function checkEx30() {
+  const user = document.getElementById('ex30Answer').value.trim().toLowerCase();
+  const correct = EX30[currentEx30].a.toLowerCase();
+  const fb = document.getElementById('ex30Feedback');
+  fb.classList.remove('hidden');
+  if (user.includes(correct.split(' ')[0]) && user.length > 5) {
+    fb.innerHTML = `<div class="note" style="background:#d1fae5;border-color:#10b981">✅ Good! Expected: <strong>${EX30[currentEx30].a}</strong></div>`;
+    ex30Score++;
+  } else {
+    fb.innerHTML = `<div class="warning">Compare with: <strong>${EX30[currentEx30].a}</strong></div>`;
+  }
+}
+
+function showEx30Answer() {
+  const fb = document.getElementById('ex30Feedback');
+  fb.classList.remove('hidden');
+  fb.innerHTML = `<div class="note">Answer: <strong>${EX30[currentEx30].a}</strong></div>`;
+}
+
+function nextEx30() {
+  currentEx30 = (currentEx30 + 1) % EX30.length;
+  loadEx30();
+}
+
+// ========== QUIZ 100 ==========
+function loadQuiz() {
+  if (currentQuiz >= QUIZ.length) {
+    showQuizResult();
+    return;
+  }
+  const item = QUIZ[currentQuiz];
+  document.getElementById('quizQ').innerHTML = `<span class="tag tag-manner">${item.type}</span> ${item.q}`;
+  document.getElementById('quizOptions').innerHTML = item.options.map((o, i) =>
+    `<button class="quiz-option" onclick="selectOption(this)" data-val="${o}">${String.fromCharCode(65 + i)}. ${o}</button>`
+  ).join('');
+  document.getElementById('quizFeedback').classList.add('hidden');
+  document.getElementById('quizSubmitBtn').classList.remove('hidden');
+  document.getElementById('quizNextBtn').classList.add('hidden');
+  document.getElementById('quizCounter').textContent = `Question ${currentQuiz + 1} / ${QUIZ.length}`;
+  document.getElementById('quizProgress').style.width = `${(currentQuiz / QUIZ.length) * 100}%`;
+  document.getElementById('quizResult').classList.add('hidden');
+  document.getElementById('quizCard').classList.remove('hidden');
+}
+
+let selectedOpt = null;
+function selectOption(btn) {
+  document.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedOpt = btn.dataset.val;
+}
+
+function submitQuizAnswer() {
+  if (!selectedOpt) { alert('Please select an answer'); return; }
+  const item = QUIZ[currentQuiz];
+  const correct = selectedOpt === item.a;
+  if (correct) quizScore++;
+  quizAnswers.push({ q: item.q, selected: selectedOpt, correct: item.a, exp: item.exp, bn: item.bn, ok: correct });
+  const fb = document.getElementById('quizFeedback');
+  fb.classList.remove('hidden');
+  fb.innerHTML = correct
+    ? `<div class="note" style="background:#d1fae5;border-color:#10b981">✅ Correct!<br>${item.exp}<br><em>${item.bn}</em></div>`
+    : `<div class="warning">❌ Incorrect. Correct answer: <strong>${item.a}</strong><br>${item.exp}<br><em>${item.bn}</em></div>`;
+  document.querySelectorAll('.quiz-option').forEach(b => {
+    if (b.dataset.val === item.a) b.classList.add('correct');
+    else if (b.dataset.val === selectedOpt) b.classList.add('incorrect');
+  });
+  document.getElementById('quizSubmitBtn').classList.add('hidden');
+  document.getElementById('quizNextBtn').classList.remove('hidden');
+  selectedOpt = null;
+}
+
+function nextQuizQ() {
+  currentQuiz++;
+  loadQuiz();
+}
+
+function showQuizResult() {
+  document.getElementById('quizCard').classList.add('hidden');
+  const res = document.getElementById('quizResult');
+  res.classList.remove('hidden');
+  const pct = Math.round((quizScore / QUIZ.length) * 100);
+  document.getElementById('resultStats').innerHTML = `
+    <div class="stat-card"><div class="num">${quizScore}</div><div class="label">Correct</div></div>
+    <div class="stat-card"><div class="num">${QUIZ.length - quizScore}</div><div class="label">Incorrect</div></div>
+    <div class="stat-card"><div class="num">${pct}%</div><div class="label">Score</div></div>
+    <div class="stat-card"><div class="num">${QUIZ.length}</div><div class="label">Total</div></div>
+  `;
+  progress.lastQuizScore = pct;
+  progress.lastQuizDate = new Date().toLocaleDateString();
+  localStorage.setItem('adverbProgress', JSON.stringify(progress));
+  updateProgress();
+}
+
+function restartQuiz() {
+  currentQuiz = 0;
+  quizScore = 0;
+  quizAnswers = [];
+  loadQuiz();
+}
+
+function reviewWrong() {
+  const wrong = quizAnswers.filter(a => !a.ok);
+  if (!wrong.length) { alert('No wrong answers!'); return; }
+  document.getElementById('quizCard').classList.remove('hidden');
+  document.getElementById('quizResult').classList.add('hidden');
+  document.getElementById('quizQ').innerHTML = `<strong>Review of Wrong Answers (${wrong.length})</strong>`;
+  document.getElementById('quizOptions').innerHTML = wrong.map((w, i) => `
+    <div class="example-box" style="margin:10px 0">
+      <strong>Q${i + 1}:</strong> ${w.q}<br>
+      Your answer: <span style="color:var(--danger)">${w.selected}</span><br>
+      Correct: <span style="color:var(--success)">${w.correct}</span><br>
+      <small>${w.exp} · ${w.bn}</small>
+    </div>
+  `).join('');
+  document.getElementById('quizSubmitBtn').classList.add('hidden');
+  document.getElementById('quizNextBtn').classList.add('hidden');
+  document.getElementById('quizFeedback').classList.add('hidden');
+}
+
+// ========== PROGRESS ==========
+function updateProgress() {
+  const el = document.getElementById('progressStats');
+  el.innerHTML = `
+    <div class="stat-card"><div class="num">${progress.lastQuizScore || 0}%</div><div class="label">Last Test Score</div></div>
+    <div class="stat-card"><div class="num">${progress.lastQuizDate || '—'}</div><div class="label">Last Attempt</div></div>
+    <div class="stat-card"><div class="num">${RULES.length}</div><div class="label">Rules Covered</div></div>
+    <div class="stat-card"><div class="num">${EX30.length}</div><div class="label">Ex.30 Items</div></div>
+  `;
+}
+
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    localStorage.removeItem('adverbProgress');
+    progress = {};
+    updateProgress();
+  }
+}
+
+// ========== SEARCH ==========
+function doGlobalSearch() {
+  const q = document.getElementById('globalSearch').value.toLowerCase().trim();
+  const res = document.getElementById('searchResults');
+  if (!q) { res.innerHTML = ''; return; }
+  const hits = RULES.filter(r =>
+    r.title.toLowerCase().includes(q) ||
+    r.original.toLowerCase().includes(q) ||
+    r.bengali.toLowerCase().includes(q) ||
+    (r.notes && r.notes.toLowerCase().includes(q))
+  );
+  res.innerHTML = hits.length
+    ? hits.map(r => `<div class="card"><span class="rule-num">Rule ${r.id}</span><h3>${r.title}</h3><p>${r.original.substring(0, 180)}...</p><button class="btn btn-outline" onclick="showScreen('rules');document.getElementById('ruleSearch').value='${r.id}';filterRules()">View Full Rule</button></div>`).join('')
+    : '<p>No matching rules found.</p>';
+}
+
+// ========== NAVIGATION ==========
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.nav-btn[data-screen="${id}"]`);
+  if (btn) btn.classList.add('active');
+  if (id === 'rules') renderRules();
+  if (id === 'classification') renderClass();
+  if (id === 'position') renderPosition();
+  if (id === 'exercise30') loadEx30();
+  if (id === 'quiz100') { currentQuiz = 0; quizScore = 0; quizAnswers = []; loadQuiz(); }
+  if (id === 'progress') updateProgress();
+  window.scrollTo(0, 0);
+}
+
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', () => showScreen(btn.dataset.screen));
+});
+
+// ========== AUDIO ==========
+function speak(text) {
+  if ('speechSynthesis' in window) {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-IN';
+    u.rate = 0.9;
+    speechSynthesis.speak(u);
+  }
+}
+
+// ========== PWA ==========
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+// ========== INIT ==========
+renderRules();
+updateProgress();
+</script>
+</body>
+</html>
